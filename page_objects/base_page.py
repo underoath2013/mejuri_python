@@ -34,7 +34,7 @@ class BasePage:
     def verify_title(self, title):
         self.logger.info("%s: Check for title: %s" % (self.class_name, str(title)))
         try:
-            return WebDriverWait(self.driver, 3).until(EC.title_is(title))
+            return WebDriverWait(self.driver, 5).until(EC.title_is(title))
         except TimeoutException:
             allure.attach(
                 name=f"{self.driver.current_url}",
@@ -49,7 +49,7 @@ class BasePage:
     def verify_url(self, url):
         self.logger.info("%s: Check for url: %s" % (self.class_name, str(url)))
         try:
-            return WebDriverWait(self.driver, 3).until(EC.url_to_be(url))
+            return WebDriverWait(self.driver, 5).until(EC.url_to_be(url))
         except TimeoutException:
             allure.attach(
                 name=f"{self.driver.current_url}",
@@ -74,7 +74,7 @@ class BasePage:
     def element(self, locator: tuple):
         self.logger.info("%s: Check if element %s is visible" % (self.class_name, str(locator)))
         try:
-            return WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located(locator))
+            return WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(locator))
         except TimeoutException:
             allure.attach(
                 name=f"{self.driver.current_url}",
@@ -95,7 +95,7 @@ class BasePage:
     def elements(self, locator: tuple):
         self.logger.info("%s: Check if all elements %s is visible" % (self.class_name, str(locator)))
         try:
-            return WebDriverWait(self.driver, 3).until(EC.visibility_of_all_elements_located(locator))
+            return WebDriverWait(self.driver, 5).until(EC.visibility_of_all_elements_located(locator))
         except TimeoutException:
             allure.attach(
                 name=f"{self.driver.current_url}",
@@ -115,7 +115,7 @@ class BasePage:
     def title_contains(self, title: str):
         self.logger.info("%s: Check title: %s" % (self.class_name, title))
         try:
-            return WebDriverWait(self.driver, 3).until(EC.title_contains(title))
+            return WebDriverWait(self.driver, 5).until(EC.title_contains(title))
         except TimeoutException:
             allure.attach(
                 name=f"{self.driver.current_url}",
@@ -130,7 +130,7 @@ class BasePage:
     def elements_presence(self, locator: tuple):
         self.logger.info("%s: Check if all elements %s is presence" % (self.class_name, locator))
         try:
-            return WebDriverWait(self.driver, 3).until(EC.presence_of_all_elements_located(locator))
+            return WebDriverWait(self.driver, 5).until(EC.presence_of_all_elements_located(locator))
         except TimeoutException:
             allure.attach(
                 name=f"{self.driver.current_url}",
@@ -145,7 +145,7 @@ class BasePage:
     def element_presence(self, locator: tuple):
         self.logger.info("%s: Check if element %s is presence" % (self.class_name, locator))
         try:
-            return WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(locator))
+            return WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(locator))
         except TimeoutException:
             allure.attach(
                 name=f"{self.driver.current_url}",
@@ -159,7 +159,7 @@ class BasePage:
     @allure.step
     def accept_alert(self):
         try:
-            alert = WebDriverWait(self.driver, 3).until(EC.alert_is_present())
+            alert = WebDriverWait(self.driver, 5).until(EC.alert_is_present())
             alert.accept()
             self.logger.info("%s: Accept alert %s" % (self.class_name, alert))
         except TimeoutException:
@@ -177,7 +177,7 @@ class BasePage:
     @allure.step
     def cancel_alert(self):
         try:
-            alert = WebDriverWait(self.driver, 3).until(EC.alert_is_present())
+            alert = WebDriverWait(self.driver, 5).until(EC.alert_is_present())
             alert.dismiss()
             self.logger.info("%s: Dismiss alert %s" % (self.class_name, alert))
         except TimeoutException:
