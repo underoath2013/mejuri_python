@@ -4,8 +4,11 @@ from page_objects.base_page import BasePage
 
 class MainPage(BasePage):
     NAV_BAR_USER_BUTTON = (By.CSS_SELECTOR, '[data-testid="nav-dp-l1-user-navigation-signup-icon"]')
-    EMAIL_INPUT = (By.CSS_SELECTOR, '#input-email')
-    PASSWORD_INPUT = (By.CSS_SELECTOR, '#input-password')
+    SING_IN_BUTTON = (By.XPATH, "//a[@class='styled__ButtonWrapper-sc-1waring-0 iwImlv']")
+    # EMAIL_INPUT = (By.CSS_SELECTOR, '#input-email')
+    EMAIL_INPUT = (By.CSS_SELECTOR, "input[name='email']")
+    PASSWORD_INPUT = (By.CSS_SELECTOR, "input[name='password']")
+    # PASSWORD_INPUT = (By.CSS_SELECTOR, '#input-password')
     CONTINUE_BUTTON = (By.CSS_SELECTOR, "button[type='submit']")
     SEACRH_ICON = (By.CSS_SELECTOR, '[data-testid="nav-dp-l1-user-navigation-search"]')
     SEACRH_INPUT = (By.CSS_SELECTOR, '[data-testid="main-search-input"]')
@@ -16,7 +19,9 @@ class MainPage(BasePage):
     RINGS_LINK = (By.XPATH, "//a[@name='Rings - snail trail link']")
     RINGS_IMAGE = (By.XPATH, "//picture[@name='Image']//img[@alt='Rings Image']")
     HONEY_MINI_SIGNET_IMAGE = (By.XPATH, "//img[contains(@alt,'Honey Mini Signet in Gold Vermeil on figure')]")
-    
+    BIRTHDAY_INPUT = (By.CSS_SELECTOR, '[data-testid="birthdate-input"]')
+    SAVE_BIRTHDAY_BUTTON = (By.CSS_SELECTOR, '[data-testid="save-birthdate-button"]')
+
 
     def click_nav_bar_user_button(self):
         self.click(self.element(MainPage.NAV_BAR_USER_BUTTON))
@@ -53,4 +58,12 @@ class MainPage(BasePage):
 
     def click_on_honey_image(self):
         self.click(self.element(MainPage.HONEY_MINI_SIGNET_IMAGE))
-    
+
+    def find_birthday_input(self):
+        return self.element(MainPage.BIRTHDAY_INPUT)
+
+    def click_on_save_birthday_button(self):
+        self.click(self.element(MainPage.SAVE_BIRTHDAY_BUTTON))
+
+    def click_on_sing_in_button(self):
+        self.click(self.element(MainPage.SING_IN_BUTTON))

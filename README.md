@@ -13,3 +13,5 @@ After pytest runnig logs are available in /logs directory.
 For allure:
 allure generate allure-results -c
 allure open .\allure-report\
+
+[Demo video](https://youtu.be/ztAzrR3VXmE)
